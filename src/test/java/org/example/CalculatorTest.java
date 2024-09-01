@@ -12,7 +12,7 @@ class CalculatorTest {
         int a = 1;
         int b = 2;
 
-        Calculator calc = new Calculator();
+        Calculator calc = new Calculator(5);
 
         int sum = calc.sum(a, b);
 

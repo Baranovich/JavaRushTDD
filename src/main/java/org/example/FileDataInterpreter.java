@@ -5,12 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-public class App {
-    public static void main(String[] args) {
-        readFilePathFromConsoleThenFilterFileDataAndWriteDataToConsole();
-    }
+public class FileDataInterpreter {
 
-    private static void readFilePathFromConsoleThenFilterFileDataAndWriteDataToConsole() {
+    public void readFilePathFromConsoleThenFilterFileDataAndWriteDataToConsole() {
         try {
             Files.readAllLines(Path.of(readFilePathFromConsole())).forEach(s -> writeDataToConsole(filterFileData(s)));
         } catch (IOException e) {
@@ -18,11 +15,11 @@ public class App {
         }
     }
 
-    private static String readFilePathFromConsole() {
+    public String readFilePathFromConsole() {
 
         String filePath;
 
-        try (Scanner scanner = new Scanner(System.in)) {
+        try(Scanner scanner = new Scanner(System.in)) {
             filePath = scanner.nextLine();
         } catch (NullPointerException nullPointerException) {
             System.out.println("Error due to file path reading!");
@@ -32,11 +29,11 @@ public class App {
         return filePath;
     }
 
-    private static String filterFileData(String fileData) {
+    public String filterFileData(String fileData) {
         return fileData.replaceAll("[ ,.]", "");
     }
 
-    private static void writeDataToConsole(String data) {
+    public void writeDataToConsole(String data) {
         System.out.println(data);
     }
 }
